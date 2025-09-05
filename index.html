@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creative Photo Gallery</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background: #f2f2f2;
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  color: #333;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.photo {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.photo img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.photo:hover img {
+  transform: scale(1.2);
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.photo:hover .overlay {
+  opacity: 1;
+}
+
+/* Modal Styles */
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 10; 
+  padding-top: 100px; 
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.8);
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  max-width: 80%;
+  border-radius: 10px;
+}
+
+#modal-caption {
+  text-align: center;
+  color: #fff;
+  margin-top: 10px;
+  font-size: 18px;
+}
+
+.close {
+  position: absolute;
+  top: 30px;
+  right: 50px;
+  color: #fff;
+  font-size: 40px;
+  cursor: pointer;
+}
+
+  </style>
+</head>
+<body>
+  <h1>My Creative Photo Gallery</h1>
+
+  <div class="gallery">
+    <div class="photo" onclick="openModal('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCNOBuS2GjIJDIFqD1jTI38YW7Un2BpW8CuA&s','Beautiful Mountain')">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCNOBuS2GjIJDIFqD1jTI38YW7Un2BpW8CuA&s" alt="Mountain">
+      <div class="overlay">Beautiful Mountain</div>
+    </div>
+    <div class="photo" onclick="openModal('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6IsJdnW9svT8IBKZ9_8rNs2xGRp44hNInag&s','Sunset View')">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6IsJdnW9svT8IBKZ9_8rNs2xGRp44hNInag&s" alt="Sunset">
+      <div class="overlay">Sunset View</div>
+    </div>
+    <div class="photo" onclick="openModal('https://rukminim2.flixcart.com/image/704/844/j2p1ci80/poster/f/t/s/large-ajay1318-my-home-bikini-sexy-girl-31poster-poster-size-original-imaerg4aennvjfxh.jpeg?q=90&crop=false','Beach Paradise')">
+      <img src="https://rukminim2.flixcart.com/image/704/844/j2p1ci80/poster/f/t/s/large-ajay1318-my-home-bikini-sexy-girl-31poster-poster-size-original-imaerg4aennvjfxh.jpeg?q=90&crop=false" alt="Beach">
+      <div class="overlay">Beach Paradise</div>
+    </div>
+    <div class="photo" onclick="openModal('https://sundayriot.com/cdn/shop/products/image.jpg?v=1650022411','City Lights')">
+      <img src="https://sundayriot.com/cdn/shop/products/image.jpg?v=1650022411" alt="City">
+      <div class="overlay">City Lights</div>
+    </div>
+    <div class="photo" onclick="openModal('https://img.goodfon.com/wallpaper/big/f/f1/nikki-hill-lantern-forest-trees-clearing-countryside-nature.webp','Forest Trail')">
+      <img src="https://img.goodfon.com/wallpaper/big/f/f1/nikki-hill-lantern-forest-trees-clearing-countryside-nature.webp" alt="Forest">
+      <div class="overlay">Forest Trail</div>
+    </div>
+    <div class="photo" onclick="openModal('https://thumbs.dreamstime.com/b/happy-girl-bikini-playing-snow-city-center-happy-girl-bikini-playing-snow-city-center-111084631.jpg','Snowy Peaks')">
+      <img src="https://thumbs.dreamstime.com/b/happy-girl-bikini-playing-snow-city-center-happy-girl-bikini-playing-snow-city-center-111084631.jpg" alt="Snow">
+      <div class="overlay">Snowy Peaks</div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="modal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modal-img">
+    <div id="modal-caption"></div>
+  </div>
+
+  <script >
+    function openModal(src, caption) {
+  document.getElementById('modal').style.display = "block";
+  document.getElementById('modal-img').src = src;
+  document.getElementById('modal-caption').innerText = caption;
+}
+
+function closeModal() {
+  document.getElementById('modal').style.display = "none";
+}
+
+  </script>
+</body>
+</html>
